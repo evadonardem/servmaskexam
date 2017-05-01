@@ -5639,3 +5639,16 @@ function wp_cache_get_last_changed( $group ) {
 
 	return $last_changed;
 }
+
+function add_assets() {
+		wp_enqueue_style(
+			'servmaskexam-css',
+			includes_url() . 'css/servmaskexam.css'
+		);
+    wp_enqueue_script(
+			'jquery-validate-min',
+      includes_url() . 'js/jquery.validate.min.js',
+      array( 'jquery' )
+    );
+}
+add_action('wp_enqueue_scripts', "add_assets");

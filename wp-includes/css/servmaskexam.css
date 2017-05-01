@@ -1,0 +1,11 @@
+label.error {
+  color: red;
+  font-style: oblique;
+}
+label.error::before {
+  content: "*"
+}
+
+span.serv-message {
+  padding: 12px;
+}

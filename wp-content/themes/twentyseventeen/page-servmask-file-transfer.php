@@ -42,21 +42,48 @@ get_header(); ?>
 				<input type="password" name="destination_password" />
 				<br>
 
+				<input type="hidden" name="action" value="servmask_transfer_file_form">
+				<button type="submit">Transfer</button>
+
 				<?php if ( filter_input( INPUT_GET, 'authentication' ) === 'failed' ) : ?>
-					<p style="color: red;"><em>* Invalid username and password for WordPress site URL.</em></p>
+					<span style="color: red;" class="serv-message"><em>* Invalid username and password for WordPress site URL.</em></span>
 				<?php endif ?>
 
 				<?php if ( filter_input( INPUT_GET, 'file-transfer' ) === 'success' ) : ?>
-					<p style="color: green;"><em>File transferred successfully.</em></p>
+					<span style="color: green;" class="serv-message"><em>File transferred successfully.</em></span>
 				<?php elseif ( filter_input( INPUT_GET, 'file-transfer' ) === 'failed' ) : ?>
-					<p style="color: red;"><em>File transfer failed.</em></p>
+					<span style="color: red;" class="serv-message"><em>File transfer failed.</em></span>
 				<?php endif ?>
 
-
-				<input type="hidden" name="action" value="servmask_transfer_file_form">
-				<button type="submit">Transfer</button><!--more-->
-
 			</form>
+
+			<script type="text/javascript">
+				var $ = jQuery.noConflict();
+				$(function() {
+					$('form').validate({
+			        rules: {
+			            'source_filepath': {
+			                required: true
+			            },
+			            'destination_site': {
+			                required: true
+			            },
+									'destination_username': {
+			                required: true,
+											minlength: 3
+			            },
+									'destination_password': {
+			                required: true,
+											minlength: 3
+			            }
+			        }
+			    });
+					setTimeout(function() {
+						$('span.serv-message').hide();
+					}, 3000);
+				});
+			</script>
+
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
