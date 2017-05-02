@@ -18,7 +18,7 @@ If this is too difficult to implement, you can opt for:
 1. Install the plugin on source and destination websites
 2. The destination will generate a url
 3. Use that URL on the source site to transfer the file
-
+Indcluded a copy the database for reference -> ./schema/servmaskexam_db.sql
 
 ## NOTES
 The following are the completed tasks:
